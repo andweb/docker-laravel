@@ -13,20 +13,20 @@ RUN apt-get update \
     libfreetype6-dev \
     libssl-dev \
     libmcrypt-dev \
+    libzip-dev \
+    zip \
   && rm -rf /var/lib/apt/lists/*
 
-  # Install the PHP pdo_mysql extention
-  RUN docker-php-ext-install pdo_mysql \
-  # Install the PHP pdo_pgsql extention
-  && docker-php-ext-install pdo_pgsql \
+  RUN docker-php-ext-install -j$(nproc) pdo_mysql pdo_pgsql bcmath \
+
+  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-install zip \
+
   # Install the PHP gd library
   && docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/lib \
     --with-freetype-dir=/usr/include/freetype2 && \
-    docker-php-ext-install gd \
-
-  && docker-php-ext-install bcmath \
-  && docker-php-ext-install tokenizer
+    docker-php-ext-install gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
