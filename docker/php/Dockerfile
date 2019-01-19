@@ -3,6 +3,8 @@ FROM php:7.2-fpm
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl \
+    wget \
+    git \
     libmemcached-dev \
     libz-dev \
     libpq-dev \
