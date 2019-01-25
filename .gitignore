@@ -1,4 +1,7 @@
 /.idea
 /docker/mysql
 /docker/nginx/logs
+/docker/nginx/sites/project.conf
+docker-compose.yml
+
 
