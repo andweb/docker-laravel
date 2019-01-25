@@ -18,7 +18,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
   RUN docker-php-ext-install -j$(nproc) pdo_mysql pdo_pgsql bcmath \
-
   && docker-php-ext-configure zip --with-libzip \
   && docker-php-ext-install zip \
 
