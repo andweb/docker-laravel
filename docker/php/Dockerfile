@@ -20,7 +20,6 @@ RUN apt-get update \
   RUN docker-php-ext-install -j$(nproc) pdo_mysql pdo_pgsql bcmath \
   && docker-php-ext-configure zip --with-libzip \
   && docker-php-ext-install zip \
-
   # Install the PHP gd library
   && docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/lib \
