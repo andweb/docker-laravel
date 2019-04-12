@@ -1,7 +1,7 @@
 /.idea
 /docker/mysql
 /docker/nginx/logs
-/docker/nginx/sites/project.conf
+/docker/nginx/sites/docker-laravel.conf
 docker-compose.yml
 
 

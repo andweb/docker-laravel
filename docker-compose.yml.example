@@ -3,10 +3,9 @@ version: '3.3'
 services:
     nginx:
         image: nginx:latest
-        container_name: nginx
+        container_name: nginx-d-laravel
         ports:
-            - "80:80"
-            - "443:443"
+            - "8087:80"
         volumes:
             - ./docker/nginx/sites:/etc/nginx/conf.d
             - ./docker/nginx/logs:/var/log/nginx/
@@ -17,8 +16,8 @@ services:
     mysql:
         image: mysql:latest
         ports:
-            - "3306:3306"
-        container_name: mysql
+            - "33067:3306"
+        container_name: mysql-d-laravel
         environment:
             - MYSQL_ROOT_PASSWORD=
             - MYSQL_DATABASE=project
@@ -30,7 +29,7 @@ services:
 
     php:
         build: ./docker/php
-        container_name: php-fpm
+        container_name: php-fpm-d-laravel
         volumes:
             - ./code:/var/www/project
         links:
@@ -38,9 +37,9 @@ services:
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin
+        container_name: phpmyadmin-d-laravel
         ports:
-            - 8090:80
+            - 8097:80
 
         links:
             - mysql:db
